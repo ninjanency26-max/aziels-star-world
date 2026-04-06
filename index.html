@@ -1634,14 +1634,12 @@ const AUDIO_DATA = {
                 });
                 resultBanner.className = 'result-banner correct';
                 resultBanner.style.display = 'flex';
-                resultBanner.innerHTML = '<span class="result-icon">✅</span><span class="result-text">Amazing! That\'s ' + q.target.word + '!</span>';
+                resultBanner.innerHTML = '<span class="result-icon">✅</span><span class="result-text">' + q.target.word + '! ⭐</span>';
                 btn.textContent = 'CONTINUE ➡️';
                 btn.className = 'continue-btn next-btn';
                 lessonXPEarned += 5;
 
-                const praises = ['Great job!', 'Yay!', 'You got it!', 'Awesome!', 'Super!', 'Yes!', 'Perfect!', 'Hurray!', 'Woo hoo!'];
-                const praise = praises[Math.floor(Math.random() * praises.length)];
-                setTimeout(() => speakPraise(praise + ' ' + q.target.word), 200);
+                setTimeout(() => speakWord(q.target.word), 400);
                 showXPPopup(selectedChoice);
 
             } else {
@@ -1654,10 +1652,10 @@ const AUDIO_DATA = {
                 });
                 resultBanner.className = 'result-banner wrong';
                 resultBanner.style.display = 'flex';
-                resultBanner.innerHTML = '<span class="result-icon">💙</span><span class="result-text">This one is ' + q.target.word + '!</span>';
+                resultBanner.innerHTML = '<span class="result-icon">💙</span><span class="result-text">' + q.target.word + '</span>';
                 btn.textContent = 'GOT IT 👍';
                 btn.className = 'continue-btn retry-btn';
-                setTimeout(() => speakThisIs(q.target.word), 300);
+                setTimeout(() => speakWord(q.target.word), 300);
             }
         }
 
@@ -1710,9 +1708,6 @@ const AUDIO_DATA = {
             if (!ranOutOfHearts) {
                 launchConfetti();
                 sfxComplete();
-                setTimeout(() => speakPraise('Amazing! You did it!'), 300);
-            } else {
-                setTimeout(() => playAudio('greatjob'), 300);
             }
         }
 
